@@ -21,9 +21,10 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAzureStaticWebApps",
         builder => builder
-            .WithOrigins("https://green-bay-07e299f1e.6.azurestaticapps.net")
+            .WithOrigins("https://green-bay-07e299f1e.6.azurestaticapps.net", "http://localhost:5001")
             .AllowAnyMethod()
-            .AllowAnyHeader());
+            .AllowAnyHeader()
+            .AllowCredentials());
 });
 
 var app = builder.Build();
