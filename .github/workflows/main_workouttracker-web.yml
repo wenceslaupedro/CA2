@@ -24,18 +24,30 @@ jobs:
           dotnet-version: '8.x'
 
       - name: Build with dotnet
-        run: dotnet build --configuration Release
+        run: |
+          dotnet build --configuration Release
 
-      - name: dotnet publish
-        run: dotnet publish -c Release -o "${{env.DOTNET_ROOT}}/myapp"
+      - name: Publish Web Project
+        run: |
+          dotnet publish WorkoutTracker.Web/WorkoutTracker.Web.csproj -c Release -o "${{env.DOTNET_ROOT}}/web"
 
-      - name: Upload artifact for deployment job
+      - name: Publish API Project
+        run: |
+          dotnet publish WorkoutTracker.API/WorkoutTracker.API.csproj -c Release -o "${{env.DOTNET_ROOT}}/api"
+
+      - name: Upload Web artifact
         uses: actions/upload-artifact@v4
         with:
-          name: .net-app
-          path: ${{env.DOTNET_ROOT}}/myapp
+          name: web-app
+          path: ${{env.DOTNET_ROOT}}/web
 
-  deploy:
+      - name: Upload API artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: api-app
+          path: ${{env.DOTNET_ROOT}}/api
+
+  deploy-web:
     runs-on: windows-latest
     needs: build
     environment:
@@ -43,12 +55,12 @@ jobs:
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
     
     steps:
-      - name: Download artifact from build job
+      - name: Download Web artifact
         uses: actions/download-artifact@v4
         with:
-          name: .net-app
+          name: web-app
       
-      - name: Deploy to Azure Web App
+      - name: Deploy Web to Azure Web App
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
         with:
@@ -56,3 +68,25 @@ jobs:
           slot-name: 'Production'
           package: .
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_BE636FD521A845AA975E2204D82EB1ED }}
+
+  deploy-api:
+    runs-on: windows-latest
+    needs: build
+    environment:
+      name: 'Production'
+      url: ${{ steps.deploy-to-api.outputs.webapp-url }}
+    
+    steps:
+      - name: Download API artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: api-app
+      
+      - name: Deploy API to Azure Web App
+        id: deploy-to-api
+        uses: azure/webapps-deploy@v3
+        with:
+          app-name: 'workouttracker-api'
+          slot-name: 'Production'
+          package: .
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_API }}
