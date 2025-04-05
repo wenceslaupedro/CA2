@@ -30,10 +30,14 @@ jobs:
       - name: Publish Web Project
         run: |
           dotnet publish WorkoutTracker.Web/WorkoutTracker.Web.csproj -c Release -o "${{env.DOTNET_ROOT}}/web" --no-build
+          # Rename appsettings.json to avoid conflicts
+          mv "${{env.DOTNET_ROOT}}/web/appsettings.json" "${{env.DOTNET_ROOT}}/web/appsettings.web.json"
 
       - name: Publish API Project
         run: |
           dotnet publish WorkoutTracker.API/WorkoutTracker.API.csproj -c Release -o "${{env.DOTNET_ROOT}}/api" --no-build
+          # Rename appsettings.json to avoid conflicts
+          mv "${{env.DOTNET_ROOT}}/api/appsettings.json" "${{env.DOTNET_ROOT}}/api/appsettings.api.json"
 
       - name: Upload Web artifact
         uses: actions/upload-artifact@v4
@@ -60,6 +64,10 @@ jobs:
         with:
           name: web-app
       
+      - name: Rename appsettings for Web
+        run: |
+          mv appsettings.web.json appsettings.json
+      
       - name: Deploy Web to Azure Web App
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
@@ -81,6 +89,10 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: api-app
+      
+      - name: Rename appsettings for API
+        run: |
+          mv appsettings.api.json appsettings.json
       
       - name: Deploy API to Azure Web App
         id: deploy-to-api
