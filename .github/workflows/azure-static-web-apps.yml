@@ -8,8 +8,6 @@ on:
     branches: [ main ]
 
 env:
-  AZURE_STATIC_WEB_APPS_API_TOKEN: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
-  AZURE_STATIC_WEB_APPS_API_URL: ${{ secrets.AZURE_STATIC_WEB_APPS_API_URL }}
   ASPNETCORE_ENVIRONMENT: Production
 
 jobs:
@@ -29,11 +27,8 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           action: "upload"
           app_location: "WorkoutTracker.Web"
-          api_location: "WorkoutTracker.API"
           output_location: "wwwroot"
           app_build_command: "dotnet publish -c Release -o wwwroot"
-          api_build_command: "dotnet publish -c Release -o api"
           skip_app_build: false
-          skip_api_build: false
           skip_deploy_on_missing_secrets: false
           deployment_token: ${{ secrets.AZURE_STATIC_WEB_APPS_DEPLOYMENT_TOKEN }} 
