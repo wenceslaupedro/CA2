@@ -29,11 +29,11 @@ jobs:
 
       - name: Publish Web Project
         run: |
-          dotnet publish WorkoutTracker.Web/WorkoutTracker.Web.csproj -c Release -o "${{env.DOTNET_ROOT}}/web"
+          dotnet publish WorkoutTracker.Web/WorkoutTracker.Web.csproj -c Release -o "${{env.DOTNET_ROOT}}/web" --no-build
 
       - name: Publish API Project
         run: |
-          dotnet publish WorkoutTracker.API/WorkoutTracker.API.csproj -c Release -o "${{env.DOTNET_ROOT}}/api"
+          dotnet publish WorkoutTracker.API/WorkoutTracker.API.csproj -c Release -o "${{env.DOTNET_ROOT}}/api" --no-build
 
       - name: Upload Web artifact
         uses: actions/upload-artifact@v4

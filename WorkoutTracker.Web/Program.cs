@@ -4,18 +4,36 @@ using WorkoutTracker.Web.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Configure Kestrel
-builder.WebHost.ConfigureKestrel(options =>
-{
-    options.ListenAnyIP(8080); // Azure Static Web Apps uses port 8080
-});
-
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-// Set environment based on configuration
-var environment = builder.Environment;
-environment.EnvironmentName = builder.Configuration["ASPNETCORE_ENVIRONMENT"] ?? "Production";
+// Configure Kestrel
+builder.WebHost.ConfigureKestrel(options =>
+{
+    options.ListenLocalhost(5000);
+    options.ListenLocalhost(5001, listenOptions =>
+    {
+        listenOptions.UseHttps();
+    });
+});
+
+// Configure database
+builder.Services.AddDbContext<WorkoutContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+// Configure CORS for Azure Static Web Apps
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAzureStaticWebApps",
+        builder => builder
+            .WithOrigins(
+                "https://green-bay-07e299f1e.6.azurestaticapps.net",
+                "http://localhost:5001"
+            )
+            .AllowAnyMethod()
+            .AllowAnyHeader()
+            .AllowCredentials());
+});
 
 var app = builder.Build();
 
@@ -31,28 +49,21 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+// Enable CORS
+app.UseCors("AllowAzureStaticWebApps");
+
 app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
-// Ensure the wwwroot directory exists
-var wwwrootPath = Path.Combine(app.Environment.ContentRootPath, "wwwroot");
-if (!Directory.Exists(wwwrootPath))
+// Ensure database is created
+using (var scope = app.Services.CreateScope())
 {
-    Directory.CreateDirectory(wwwrootPath);
+    var services = scope.ServiceProvider;
+    var context = services.GetRequiredService<WorkoutContext>();
+    context.Database.EnsureCreated();
 }
-
-// Configure for Azure Static Web Apps
-app.Use(async (context, next) =>
-{
-    if (context.Request.Path.StartsWithSegments("/api"))
-    {
-        context.Response.StatusCode = 404;
-        return;
-    }
-    await next();
-});
 
 app.Run(); 

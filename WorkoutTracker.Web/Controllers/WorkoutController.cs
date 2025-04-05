@@ -1,61 +1,40 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using WorkoutTracker.Web.Models;
+using WorkoutTracker.Web.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace WorkoutTracker.Web.Controllers
 {
-    [Route("Workouts")]
     public class WorkoutController : Controller
     {
-        private static List<Exercise> _exercises = new List<Exercise>
-        {
-            new Exercise { Id = 1, Name = "Push-ups", MuscleGroup = "Chest", DifficultyLevel = "Beginner" },
-            new Exercise { Id = 2, Name = "Squats", MuscleGroup = "Legs", DifficultyLevel = "Beginner" },
-            new Exercise { Id = 3, Name = "Pull-ups", MuscleGroup = "Back", DifficultyLevel = "Intermediate" }
-        };
+        private readonly WorkoutContext _context;
 
-        private static List<Workout> _workouts = new List<Workout>
+        public WorkoutController(WorkoutContext context)
         {
-            new Workout 
-            { 
-                Id = 1, 
-                ExerciseId = 1,
-                Exercise = _exercises[0],
-                DatePerformed = DateTime.Now.AddDays(-1),
-                Sets = 3,
-                Reps = 10,
-                Weight = 0
-            },
-            new Workout 
-            { 
-                Id = 2, 
-                ExerciseId = 2,
-                Exercise = _exercises[1],
-                DatePerformed = DateTime.Now.AddDays(-2),
-                Sets = 4,
-                Reps = 12,
-                Weight = 20
-            }
-        };
+            _context = context;
+        }
 
         // GET: Workout
-        [HttpGet]
-        [HttpGet("Index")]
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View(_workouts);
+            var workouts = await _context.Workouts
+                .Include(w => w.Exercise)
+                .ToListAsync();
+            return View(workouts);
         }
 
         // GET: Workout/Details/5
-        [HttpGet("Details/{id}")]
-        public IActionResult Details(int? id)
+        public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var workout = _workouts.FirstOrDefault(w => w.Id == id);
+            var workout = await _context.Workouts
+                .Include(w => w.Exercise)
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (workout == null)
             {
                 return NotFound();
@@ -65,51 +44,48 @@ namespace WorkoutTracker.Web.Controllers
         }
 
         // GET: Workout/Create
-        [HttpGet("Create")]
         public IActionResult Create()
         {
-            ViewData["ExerciseId"] = new SelectList(_exercises, "Id", "Name");
+            ViewBag.ExerciseId = new SelectList(_context.Exercises, "Id", "Name");
             return View();
         }
 
         // POST: Workout/Create
-        [HttpPost("Create")]
+        [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create([Bind("Id,ExerciseId,DatePerformed,Sets,Reps,Weight,DurationMinutes,Notes")] Workout workout)
+        public async Task<IActionResult> Create([Bind("Id,ExerciseId,DatePerformed,Sets,Reps,Weight,DurationMinutes,Notes")] Workout workout)
         {
             if (ModelState.IsValid)
             {
-                workout.Id = _workouts.Max(w => w.Id) + 1;
-                workout.Exercise = _exercises.FirstOrDefault(e => e.Id == workout.ExerciseId);
-                _workouts.Add(workout);
+                _context.Add(workout);
+                await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ExerciseId"] = new SelectList(_exercises, "Id", "Name", workout.ExerciseId);
+            ViewBag.ExerciseId = new SelectList(_context.Exercises, "Id", "Name", workout.ExerciseId);
             return View(workout);
         }
 
         // GET: Workout/Edit/5
-        [HttpGet("Edit/{id}")]
-        public IActionResult Edit(int? id)
+        public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var workout = _workouts.FirstOrDefault(w => w.Id == id);
+            var workout = await _context.Workouts.FindAsync(id);
             if (workout == null)
             {
                 return NotFound();
             }
-            ViewData["ExerciseId"] = new SelectList(_exercises, "Id", "Name", workout.ExerciseId);
+            ViewBag.ExerciseId = new SelectList(_context.Exercises, "Id", "Name", workout.ExerciseId);
             return View(workout);
         }
 
         // POST: Workout/Edit/5
-        [HttpPost("Edit/{id}")]
+        [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, [Bind("Id,ExerciseId,DatePerformed,Sets,Reps,Weight,DurationMinutes,Notes")] Workout workout)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,ExerciseId,DatePerformed,Sets,Reps,Weight,DurationMinutes,Notes")] Workout workout)
         {
             if (id != workout.Id)
             {
@@ -118,28 +94,39 @@ namespace WorkoutTracker.Web.Controllers
 
             if (ModelState.IsValid)
             {
-                var index = _workouts.FindIndex(w => w.Id == id);
-                if (index != -1)
+                try
                 {
-                    workout.Exercise = _exercises.FirstOrDefault(e => e.Id == workout.ExerciseId);
-                    _workouts[index] = workout;
+                    _context.Update(workout);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!WorkoutExists(workout.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ExerciseId"] = new SelectList(_exercises, "Id", "Name", workout.ExerciseId);
+            ViewBag.ExerciseId = new SelectList(_context.Exercises, "Id", "Name", workout.ExerciseId);
             return View(workout);
         }
 
         // GET: Workout/Delete/5
-        [HttpGet("Delete/{id}")]
-        public IActionResult Delete(int? id)
+        public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var workout = _workouts.FirstOrDefault(w => w.Id == id);
+            var workout = await _context.Workouts
+                .Include(w => w.Exercise)
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (workout == null)
             {
                 return NotFound();
@@ -149,17 +136,22 @@ namespace WorkoutTracker.Web.Controllers
         }
 
         // POST: Workout/Delete/5
-        [HttpPost("Delete/{id}"), ActionName("Delete")]
+        [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public IActionResult DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var workout = _workouts.FirstOrDefault(w => w.Id == id);
+            var workout = await _context.Workouts.FindAsync(id);
             if (workout != null)
             {
-                _workouts.Remove(workout);
+                _context.Workouts.Remove(workout);
+                await _context.SaveChangesAsync();
             }
-
             return RedirectToAction(nameof(Index));
+        }
+
+        private bool WorkoutExists(int id)
+        {
+            return _context.Workouts.Any(e => e.Id == id);
         }
     }
 } 
