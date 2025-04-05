@@ -44,4 +44,15 @@ if (!Directory.Exists(wwwrootPath))
     Directory.CreateDirectory(wwwrootPath);
 }
 
+// Configure for Azure Static Web Apps
+app.Use(async (context, next) =>
+{
+    if (context.Request.Path.StartsWithSegments("/api"))
+    {
+        context.Response.StatusCode = 404;
+        return;
+    }
+    await next();
+});
+
 app.Run(); 
