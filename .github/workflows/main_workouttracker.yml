@@ -30,25 +30,31 @@ jobs:
 
       - name: Publish Web Project
         run: |
-          dotnet publish WorkoutTracker.Web/WorkoutTracker.Web.csproj -c Release -o "${{env.DOTNET_ROOT}}/web" --no-build
-          mv "${{env.DOTNET_ROOT}}/web/appsettings.json" "${{env.DOTNET_ROOT}}/web/appsettings.web.json"
+          dotnet publish WorkoutTracker.Web/WorkoutTracker.Web.csproj -c Release -o "${{env.DOTNET_ROOT}}/publish/web" --no-build
+          # Rename appsettings.json to avoid conflicts
+          if [ -f "${{env.DOTNET_ROOT}}/publish/web/appsettings.json" ]; then
+            mv "${{env.DOTNET_ROOT}}/publish/web/appsettings.json" "${{env.DOTNET_ROOT}}/publish/web/appsettings.web.json"
+          fi
 
       - name: Publish API Project
         run: |
-          dotnet publish WorkoutTracker.API/WorkoutTracker.API.csproj -c Release -o "${{env.DOTNET_ROOT}}/api" --no-build
-          mv "${{env.DOTNET_ROOT}}/api/appsettings.json" "${{env.DOTNET_ROOT}}/api/appsettings.api.json"
+          dotnet publish WorkoutTracker.API/WorkoutTracker.API.csproj -c Release -o "${{env.DOTNET_ROOT}}/publish/api" --no-build
+          # Rename appsettings.json to avoid conflicts
+          if [ -f "${{env.DOTNET_ROOT}}/publish/api/appsettings.json" ]; then
+            mv "${{env.DOTNET_ROOT}}/publish/api/appsettings.json" "${{env.DOTNET_ROOT}}/publish/api/appsettings.api.json"
+          fi
 
       - name: Upload Web artifact
         uses: actions/upload-artifact@v4
         with:
           name: web-app
-          path: ${{env.DOTNET_ROOT}}/web
+          path: ${{env.DOTNET_ROOT}}/publish/web
 
       - name: Upload API artifact
         uses: actions/upload-artifact@v4
         with:
           name: api-app
-          path: ${{env.DOTNET_ROOT}}/api
+          path: ${{env.DOTNET_ROOT}}/publish/api
 
   deploy-web:
     runs-on: windows-latest
@@ -65,7 +71,9 @@ jobs:
       
       - name: Rename appsettings for Web
         run: |
-          mv appsettings.web.json appsettings.json
+          if [ -f "appsettings.web.json" ]; then
+            mv appsettings.web.json appsettings.json
+          fi
       
       - name: Deploy Web to Azure Web App
         id: deploy-to-webapp
@@ -91,7 +99,9 @@ jobs:
       
       - name: Rename appsettings for API
         run: |
-          mv appsettings.api.json appsettings.json
+          if [ -f "appsettings.api.json" ]; then
+            mv appsettings.api.json appsettings.json
+          fi
       
       - name: Deploy API to Azure Web App
         id: deploy-to-api
