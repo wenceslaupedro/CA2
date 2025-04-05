@@ -6,6 +6,12 @@ on:
       - main
   workflow_dispatch:
 
+env:
+  AZURE_WEBAPP_NAME_WEB: 'workouttracker-web'
+  AZURE_WEBAPP_NAME_API: 'workouttracker-api'
+  AZURE_WEBAPP_PACKAGE_PATH_WEB: '${{env.DOTNET_ROOT}}/publish/web'
+  AZURE_WEBAPP_PACKAGE_PATH_API: '${{env.DOTNET_ROOT}}/publish/api'
+
 jobs:
   build:
     runs-on: windows-latest
@@ -75,15 +81,18 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: web-app
+
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
       
       - name: Deploy Web to Azure Web App
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
         with:
-          app-name: 'workouttracker-web'
-          slot-name: 'Production'
-          package: .
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_BE636FD521A845AA975E2204D82EB1ED }}
+          app-name: ${{ env.AZURE_WEBAPP_NAME_WEB }}
+          package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH_WEB }}
 
   deploy-api:
     runs-on: windows-latest
@@ -97,12 +106,15 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: api-app
+
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
       
       - name: Deploy API to Azure Web App
         id: deploy-to-api
         uses: azure/webapps-deploy@v3
         with:
-          app-name: 'workouttracker-api'
-          slot-name: 'Production'
-          package: .
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_BE636FD521A845AA975E2204D82EB1ED }} 
+          app-name: ${{ env.AZURE_WEBAPP_NAME_API }}
+          package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH_API }} 
