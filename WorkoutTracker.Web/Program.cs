@@ -7,7 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Configure Kestrel
 builder.WebHost.ConfigureKestrel(options =>
 {
-    options.ListenLocalhost(5001);
+    options.ListenAnyIP(8080); // Azure Static Web Apps uses port 8080
 });
 
 // Add services to the container.

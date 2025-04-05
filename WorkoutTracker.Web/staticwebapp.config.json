@@ -26,6 +26,6 @@
     ".js": "application/javascript"
   },
   "platform": {
-    "apiRuntime": "node:18"
+    "apiRuntime": "dotnet:8.0"
   }
 } 
