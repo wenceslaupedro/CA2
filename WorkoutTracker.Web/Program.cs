@@ -13,8 +13,8 @@ builder.WebHost.ConfigureKestrel(options =>
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-// Set environment to Development
-builder.Environment.EnvironmentName = "Development";
+// Set environment to Production for Azure deployment
+builder.Environment.EnvironmentName = "Production";
 
 // Configure CORS for Azure Static Web Apps
 builder.Services.AddCors(options =>
@@ -30,11 +30,7 @@ builder.Services.AddCors(options =>
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseDeveloperExceptionPage();
-}
-else
+if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
     app.UseHsts();

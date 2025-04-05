@@ -2,7 +2,7 @@
   "routes": [
     {
       "route": "/api/*",
-      "rewrite": "http://localhost:5050/api/$1"
+      "rewrite": "/api/$1"
     },
     {
       "route": "/*",
@@ -22,5 +22,11 @@
     "404": {
       "rewrite": "/index.html"
     }
+  },
+  "mimeTypes": {
+    ".json": "application/json",
+    ".html": "text/html",
+    ".css": "text/css",
+    ".js": "application/javascript"
   }
 } 
