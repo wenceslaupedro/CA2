@@ -16,6 +16,16 @@ builder.Services.AddControllersWithViews();
 // Set environment to Development
 builder.Environment.EnvironmentName = "Development";
 
+// Configure CORS for Azure Static Web Apps
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAzureStaticWebApps",
+        builder => builder
+            .WithOrigins("https://green-bay-07e299f1e.6.azurestaticapps.net")
+            .AllowAnyMethod()
+            .AllowAnyHeader());
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -33,6 +43,9 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+
+// Enable CORS
+app.UseCors("AllowAzureStaticWebApps");
 
 app.UseAuthorization();
 

@@ -145,3 +145,5 @@ E:\ca2\WorkoutTracker.API\obj\Debug\net8.0\WorkoutTracker.API.genruntimeconfig.c
 E:\ca2\WorkoutTracker.API\obj\Debug\net8.0\ref\WorkoutTracker.API.dll
 E:\ca2\WorkoutTracker.API\bin\Debug\net8.0\WorkoutTracker.Web.staticwebassets.runtime.json
 E:\ca2\WorkoutTracker.API\bin\Debug\net8.0\WorkoutTracker.API.staticwebassets.runtime.json
+E:\ca2\WorkoutTracker.API\bin\Debug\net8.0\staticwebapp.config.json
+E:\ca2\WorkoutTracker.API\obj\Debug\net8.0\WorkoutTracker.API.sourcelink.json

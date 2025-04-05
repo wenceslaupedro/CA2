@@ -16,15 +16,14 @@ builder.Services.AddControllers()
 builder.Services.AddDbContext<WorkoutContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-// Add CORS
+// Configure CORS for Azure Static Web Apps
 builder.Services.AddCors(options =>
 {
-    options.AddDefaultPolicy(builder =>
-    {
-        builder.AllowAnyOrigin()
-               .AllowAnyMethod()
-               .AllowAnyHeader();
-    });
+    options.AddPolicy("AllowAzureStaticWebApps",
+        builder => builder
+            .WithOrigins("https://green-bay-07e299f1e.6.azurestaticapps.net")
+            .AllowAnyMethod()
+            .AllowAnyHeader());
 });
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -41,7 +40,10 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseRouting();
-app.UseCors();
+
+// Enable CORS
+app.UseCors("AllowAzureStaticWebApps");
+
 app.UseAuthorization();
 
 app.MapControllers();

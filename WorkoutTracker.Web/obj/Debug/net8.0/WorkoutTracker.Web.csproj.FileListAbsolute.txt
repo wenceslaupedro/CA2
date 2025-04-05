@@ -134,3 +134,5 @@ E:\ca2\WorkoutTracker.Web\obj\Debug\net8.0\refint\WorkoutTracker.Web.dll
 E:\ca2\WorkoutTracker.Web\obj\Debug\net8.0\WorkoutTracker.Web.pdb
 E:\ca2\WorkoutTracker.Web\obj\Debug\net8.0\WorkoutTracker.Web.genruntimeconfig.cache
 E:\ca2\WorkoutTracker.Web\obj\Debug\net8.0\ref\WorkoutTracker.Web.dll
+E:\ca2\WorkoutTracker.Web\bin\Debug\net8.0\staticwebapp.config.json
+E:\ca2\WorkoutTracker.Web\obj\Debug\net8.0\WorkoutTracker.Web.sourcelink.json
