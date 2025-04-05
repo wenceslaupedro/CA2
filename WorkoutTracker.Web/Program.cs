@@ -1,5 +1,3 @@
-using Microsoft.EntityFrameworkCore;
-using WorkoutTracker.Web.Data;
 using WorkoutTracker.Web.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,11 +10,6 @@ builder.Services.AddHttpsRedirection(options =>
 {
     options.HttpsPort = 5003;
 });
-
-// Configure database
-builder.Services.AddDbContext<WorkoutContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"),
-        sqlServerOptions => sqlServerOptions.EnableRetryOnFailure()));
 
 // Configure CORS for Azure Static Web Apps
 builder.Services.AddCors(options =>
@@ -55,13 +48,5 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
-
-// Ensure database is created
-using (var scope = app.Services.CreateScope())
-{
-    var services = scope.ServiceProvider;
-    var context = services.GetRequiredService<WorkoutContext>();
-    context.Database.EnsureCreated();
-}
 
 app.Run(); 
