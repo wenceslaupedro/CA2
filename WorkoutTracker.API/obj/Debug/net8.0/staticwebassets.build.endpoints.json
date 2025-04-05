@@ -1,0 +1,170 @@
+{
+  "Version": 1,
+  "ManifestType": "Build",
+  "Endpoints": [
+    {
+      "Route": "_content/WorkoutTracker.Web/css/site.css",
+      "AssetFile": "_content/WorkoutTracker.Web/css/site.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "478"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"WY9LcucUGPILaJIAV8mm3ojHEKElyB2QESvx7k+3cvY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 05 Apr 2025 10:39:53 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-WY9LcucUGPILaJIAV8mm3ojHEKElyB2QESvx7k+3cvY="
+        }
+      ]
+    },
+    {
+      "Route": "_content/WorkoutTracker.Web/css/site.d7xhtkg3zl.css",
+      "AssetFile": "_content/WorkoutTracker.Web/css/site.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "478"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"WY9LcucUGPILaJIAV8mm3ojHEKElyB2QESvx7k+3cvY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 05 Apr 2025 10:39:53 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "d7xhtkg3zl"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-WY9LcucUGPILaJIAV8mm3ojHEKElyB2QESvx7k+3cvY="
+        },
+        {
+          "Name": "label",
+          "Value": "_content/WorkoutTracker.Web/css/site.css"
+        }
+      ]
+    },
+    {
+      "Route": "_content/WorkoutTracker.Web/js/site.1kf51zs8dm.js",
+      "AssetFile": "_content/WorkoutTracker.Web/js/site.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "83"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"/1QRyFLWQG3x/V3Sf9zHJovYtzEaxT4oAcOgb+OVSGY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 05 Apr 2025 10:41:05 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "1kf51zs8dm"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-/1QRyFLWQG3x/V3Sf9zHJovYtzEaxT4oAcOgb+OVSGY="
+        },
+        {
+          "Name": "label",
+          "Value": "_content/WorkoutTracker.Web/js/site.js"
+        }
+      ]
+    },
+    {
+      "Route": "_content/WorkoutTracker.Web/js/site.js",
+      "AssetFile": "_content/WorkoutTracker.Web/js/site.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "83"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"/1QRyFLWQG3x/V3Sf9zHJovYtzEaxT4oAcOgb+OVSGY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 05 Apr 2025 10:41:05 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-/1QRyFLWQG3x/V3Sf9zHJovYtzEaxT4oAcOgb+OVSGY="
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,240 @@
+{
+  "Version": 1,
+  "Hash": "oirf/ChouhS/GLUcoWlJFnq/qGsRJ6EcUv0Z3Jef7AY=",
+  "Source": "WorkoutTracker.API",
+  "BasePath": "_content/WorkoutTracker.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [
+    {
+      "Identity": "E:\\ca2\\WorkoutTracker.Web\\WorkoutTracker.Web.csproj",
+      "Version": 2,
+      "Source": "WorkoutTracker.Web",
+      "GetPublishAssetsTargets": "ComputeReferencedStaticWebAssetsPublishManifest;GetCurrentProjectPublishStaticWebAssetItems",
+      "AdditionalPublishProperties": "",
+      "AdditionalPublishPropertiesToRemove": "WebPublishProfileFile;TargetFramework",
+      "GetBuildAssetsTargets": "GetCurrentProjectBuildStaticWebAssetItems",
+      "AdditionalBuildProperties": "",
+      "AdditionalBuildPropertiesToRemove": "WebPublishProfileFile;TargetFramework"
+    }
+  ],
+  "DiscoveryPatterns": [
+    {
+      "Name": "WorkoutTracker.Web\\wwwroot",
+      "Source": "WorkoutTracker.Web",
+      "ContentRoot": "E:\\ca2\\WorkoutTracker.Web\\wwwroot\\",
+      "BasePath": "_content/WorkoutTracker.Web",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "E:\\ca2\\WorkoutTracker.Web\\wwwroot\\css\\site.css",
+      "SourceId": "WorkoutTracker.Web",
+      "SourceType": "Project",
+      "ContentRoot": "E:\\ca2\\WorkoutTracker.Web\\wwwroot\\",
+      "BasePath": "_content/WorkoutTracker.Web",
+      "RelativePath": "css/site#[.{fingerprint}]?.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "d7xhtkg3zl",
+      "Integrity": "WY9LcucUGPILaJIAV8mm3ojHEKElyB2QESvx7k+3cvY=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "E:\\ca2\\WorkoutTracker.Web\\wwwroot\\css\\site.css"
+    },
+    {
+      "Identity": "E:\\ca2\\WorkoutTracker.Web\\wwwroot\\js\\site.js",
+      "SourceId": "WorkoutTracker.Web",
+      "SourceType": "Project",
+      "ContentRoot": "E:\\ca2\\WorkoutTracker.Web\\wwwroot\\",
+      "BasePath": "_content/WorkoutTracker.Web",
+      "RelativePath": "js/site#[.{fingerprint}]?.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "1kf51zs8dm",
+      "Integrity": "/1QRyFLWQG3x/V3Sf9zHJovYtzEaxT4oAcOgb+OVSGY=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "E:\\ca2\\WorkoutTracker.Web\\wwwroot\\js\\site.js"
+    }
+  ],
+  "Endpoints": [
+    {
+      "Route": "_content/WorkoutTracker.Web/css/site.css",
+      "AssetFile": "E:\\ca2\\WorkoutTracker.Web\\wwwroot\\css\\site.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "478"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"WY9LcucUGPILaJIAV8mm3ojHEKElyB2QESvx7k+3cvY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 05 Apr 2025 10:39:53 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-WY9LcucUGPILaJIAV8mm3ojHEKElyB2QESvx7k+3cvY="
+        }
+      ]
+    },
+    {
+      "Route": "_content/WorkoutTracker.Web/css/site.d7xhtkg3zl.css",
+      "AssetFile": "E:\\ca2\\WorkoutTracker.Web\\wwwroot\\css\\site.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "478"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"WY9LcucUGPILaJIAV8mm3ojHEKElyB2QESvx7k+3cvY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 05 Apr 2025 10:39:53 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "d7xhtkg3zl"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-WY9LcucUGPILaJIAV8mm3ojHEKElyB2QESvx7k+3cvY="
+        },
+        {
+          "Name": "label",
+          "Value": "_content/WorkoutTracker.Web/css/site.css"
+        }
+      ]
+    },
+    {
+      "Route": "_content/WorkoutTracker.Web/js/site.1kf51zs8dm.js",
+      "AssetFile": "E:\\ca2\\WorkoutTracker.Web\\wwwroot\\js\\site.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "83"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"/1QRyFLWQG3x/V3Sf9zHJovYtzEaxT4oAcOgb+OVSGY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 05 Apr 2025 10:41:05 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "1kf51zs8dm"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-/1QRyFLWQG3x/V3Sf9zHJovYtzEaxT4oAcOgb+OVSGY="
+        },
+        {
+          "Name": "label",
+          "Value": "_content/WorkoutTracker.Web/js/site.js"
+        }
+      ]
+    },
+    {
+      "Route": "_content/WorkoutTracker.Web/js/site.js",
+      "AssetFile": "E:\\ca2\\WorkoutTracker.Web\\wwwroot\\js\\site.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "83"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"/1QRyFLWQG3x/V3Sf9zHJovYtzEaxT4oAcOgb+OVSGY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 05 Apr 2025 10:41:05 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-/1QRyFLWQG3x/V3Sf9zHJovYtzEaxT4oAcOgb+OVSGY="
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+E:\ca2\WorkoutTracker.Client\bin\Debug\net8.0\WorkoutTracker.Client.exe
+E:\ca2\WorkoutTracker.Client\bin\Debug\net8.0\WorkoutTracker.Client.deps.json
+E:\ca2\WorkoutTracker.Client\bin\Debug\net8.0\WorkoutTracker.Client.runtimeconfig.json
+E:\ca2\WorkoutTracker.Client\bin\Debug\net8.0\WorkoutTracker.Client.dll
+E:\ca2\WorkoutTracker.Client\bin\Debug\net8.0\WorkoutTracker.Client.pdb
+E:\ca2\WorkoutTracker.Client\obj\Debug\net8.0\WorkoutTracker.Client.GeneratedMSBuildEditorConfig.editorconfig
+E:\ca2\WorkoutTracker.Client\obj\Debug\net8.0\WorkoutTracker.Client.AssemblyInfoInputs.cache
+E:\ca2\WorkoutTracker.Client\obj\Debug\net8.0\WorkoutTracker.Client.AssemblyInfo.cs
+E:\ca2\WorkoutTracker.Client\obj\Debug\net8.0\WorkoutTracker.Client.csproj.CoreCompileInputs.cache
+E:\ca2\WorkoutTracker.Client\obj\Debug\net8.0\WorkoutTracker.Client.dll
+E:\ca2\WorkoutTracker.Client\obj\Debug\net8.0\refint\WorkoutTracker.Client.dll
+E:\ca2\WorkoutTracker.Client\obj\Debug\net8.0\WorkoutTracker.Client.pdb
+E:\ca2\WorkoutTracker.Client\obj\Debug\net8.0\WorkoutTracker.Client.genruntimeconfig.cache
+E:\ca2\WorkoutTracker.Client\obj\Debug\net8.0\ref\WorkoutTracker.Client.dll
