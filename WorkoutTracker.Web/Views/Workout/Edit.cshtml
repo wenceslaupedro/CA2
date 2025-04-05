@@ -13,29 +13,46 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
+                <label asp-for="ExerciseId" class="control-label">Exercise</label>
+                <select asp-for="ExerciseId" class="form-control" asp-items="ViewBag.ExerciseId"></select>
+                <span asp-validation-for="ExerciseId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
-                <textarea asp-for="Description" class="form-control"></textarea>
-                <span asp-validation-for="Description" class="text-danger"></span>
+                <label asp-for="DatePerformed" class="control-label"></label>
+                <input asp-for="DatePerformed" class="form-control" />
+                <span asp-validation-for="DatePerformed" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Date" class="control-label"></label>
-                <input asp-for="Date" class="form-control" />
-                <span asp-validation-for="Date" class="text-danger"></span>
+                <label asp-for="Sets" class="control-label"></label>
+                <input asp-for="Sets" class="form-control" />
+                <span asp-validation-for="Sets" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="Reps" class="control-label"></label>
+                <input asp-for="Reps" class="form-control" />
+                <span asp-validation-for="Reps" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Weight" class="control-label"></label>
+                <input asp-for="Weight" class="form-control" />
+                <span asp-validation-for="Weight" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DurationMinutes" class="control-label"></label>
+                <input asp-for="DurationMinutes" class="form-control" />
+                <span asp-validation-for="DurationMinutes" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Notes" class="control-label"></label>
+                <textarea asp-for="Notes" class="form-control"></textarea>
+                <span asp-validation-for="Notes" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-3">
                 <input type="submit" value="Save" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-secondary">Back to List</a>
             </div>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {

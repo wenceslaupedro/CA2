@@ -1,10 +1,15 @@
+E:\ca2\WorkoutTracker.Web\bin\Debug\net8.0\WorkoutTracker.Web.exe
+E:\ca2\WorkoutTracker.Web\bin\Debug\net8.0\WorkoutTracker.Web.dll
+E:\ca2\WorkoutTracker.Web\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.dll
+E:\ca2\WorkoutTracker.Web\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Relational.dll
+E:\ca2\WorkoutTracker.Web\bin\Debug\net8.0\web.config
 E:\ca2\WorkoutTracker.Web\bin\Debug\net8.0\appsettings.json
+E:\ca2\WorkoutTracker.Web\bin\Debug\net8.0\appsettings.Production.json
+E:\ca2\WorkoutTracker.Web\bin\Debug\net8.0\staticwebapp.config.json
 E:\ca2\WorkoutTracker.Web\bin\Debug\net8.0\WorkoutTracker.Web.staticwebassets.runtime.json
 E:\ca2\WorkoutTracker.Web\bin\Debug\net8.0\WorkoutTracker.Web.staticwebassets.endpoints.json
-E:\ca2\WorkoutTracker.Web\bin\Debug\net8.0\WorkoutTracker.Web.exe
 E:\ca2\WorkoutTracker.Web\bin\Debug\net8.0\WorkoutTracker.Web.deps.json
 E:\ca2\WorkoutTracker.Web\bin\Debug\net8.0\WorkoutTracker.Web.runtimeconfig.json
-E:\ca2\WorkoutTracker.Web\bin\Debug\net8.0\WorkoutTracker.Web.dll
 E:\ca2\WorkoutTracker.Web\bin\Debug\net8.0\WorkoutTracker.Web.pdb
 E:\ca2\WorkoutTracker.Web\bin\Debug\net8.0\Azure.Core.dll
 E:\ca2\WorkoutTracker.Web\bin\Debug\net8.0\Azure.Identity.dll
@@ -15,10 +20,8 @@ E:\ca2\WorkoutTracker.Web\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.dll
 E:\ca2\WorkoutTracker.Web\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
 E:\ca2\WorkoutTracker.Web\bin\Debug\net8.0\Microsoft.CodeAnalysis.Workspaces.dll
 E:\ca2\WorkoutTracker.Web\bin\Debug\net8.0\Microsoft.Data.SqlClient.dll
-E:\ca2\WorkoutTracker.Web\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.dll
 E:\ca2\WorkoutTracker.Web\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Abstractions.dll
 E:\ca2\WorkoutTracker.Web\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Design.dll
-E:\ca2\WorkoutTracker.Web\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Relational.dll
 E:\ca2\WorkoutTracker.Web\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.SqlServer.dll
 E:\ca2\WorkoutTracker.Web\bin\Debug\net8.0\Microsoft.Extensions.DependencyModel.dll
 E:\ca2\WorkoutTracker.Web\bin\Debug\net8.0\Microsoft.Identity.Client.dll
@@ -118,6 +121,7 @@ E:\ca2\WorkoutTracker.Web\obj\Debug\net8.0\WorkoutTracker.Web.csproj.CoreCompile
 E:\ca2\WorkoutTracker.Web\obj\Debug\net8.0\WorkoutTracker.Web.MvcApplicationPartsAssemblyInfo.cache
 E:\ca2\WorkoutTracker.Web\obj\Debug\net8.0\WorkoutTracker.Web.RazorAssemblyInfo.cache
 E:\ca2\WorkoutTracker.Web\obj\Debug\net8.0\WorkoutTracker.Web.RazorAssemblyInfo.cs
+E:\ca2\WorkoutTracker.Web\obj\Debug\net8.0\WorkoutTracker.Web.sourcelink.json
 E:\ca2\WorkoutTracker.Web\obj\Debug\net8.0\scopedcss\bundle\WorkoutTracker.Web.styles.css
 E:\ca2\WorkoutTracker.Web\obj\Debug\net8.0\staticwebassets.build.json
 E:\ca2\WorkoutTracker.Web\obj\Debug\net8.0\staticwebassets.development.json
@@ -134,5 +138,3 @@ E:\ca2\WorkoutTracker.Web\obj\Debug\net8.0\refint\WorkoutTracker.Web.dll
 E:\ca2\WorkoutTracker.Web\obj\Debug\net8.0\WorkoutTracker.Web.pdb
 E:\ca2\WorkoutTracker.Web\obj\Debug\net8.0\WorkoutTracker.Web.genruntimeconfig.cache
 E:\ca2\WorkoutTracker.Web\obj\Debug\net8.0\ref\WorkoutTracker.Web.dll
-E:\ca2\WorkoutTracker.Web\bin\Debug\net8.0\staticwebapp.config.json
-E:\ca2\WorkoutTracker.Web\obj\Debug\net8.0\WorkoutTracker.Web.sourcelink.json

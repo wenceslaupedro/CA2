@@ -24,7 +24,7 @@ builder.Services.AddCors(options =>
         builder => builder
             .WithOrigins(
                 "https://green-bay-07e299f1e.6.azurestaticapps.net",
-                builder.Configuration["AZURE_STATIC_WEB_APPS_API_URL"] ?? "http://localhost:5001"
+                "http://localhost:5001"
             )
             .AllowAnyMethod()
             .AllowAnyHeader()

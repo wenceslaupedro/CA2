@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "oirf/ChouhS/GLUcoWlJFnq/qGsRJ6EcUv0Z3Jef7AY=",
+  "Hash": "XzjZc5HkxGgrLgq7ub6OnqAPgqyvKvKjvHSw9dsZ5z8=",
   "Source": "WorkoutTracker.API",
   "BasePath": "_content/WorkoutTracker.API",
   "Mode": "Default",
@@ -11,10 +11,10 @@
       "Version": 2,
       "Source": "WorkoutTracker.Web",
       "GetPublishAssetsTargets": "ComputeReferencedStaticWebAssetsPublishManifest;GetCurrentProjectPublishStaticWebAssetItems",
-      "AdditionalPublishProperties": "",
+      "AdditionalPublishProperties": "Configuration=Debug;Platform=AnyCPU",
       "AdditionalPublishPropertiesToRemove": "WebPublishProfileFile;TargetFramework",
       "GetBuildAssetsTargets": "GetCurrentProjectBuildStaticWebAssetItems",
-      "AdditionalBuildProperties": "",
+      "AdditionalBuildProperties": "Configuration=Debug;Platform=AnyCPU",
       "AdditionalBuildPropertiesToRemove": "WebPublishProfileFile;TargetFramework"
     }
   ],

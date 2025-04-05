@@ -7,6 +7,7 @@ E:\ca2\WorkoutTracker.Client\obj\Debug\net8.0\WorkoutTracker.Client.GeneratedMSB
 E:\ca2\WorkoutTracker.Client\obj\Debug\net8.0\WorkoutTracker.Client.AssemblyInfoInputs.cache
 E:\ca2\WorkoutTracker.Client\obj\Debug\net8.0\WorkoutTracker.Client.AssemblyInfo.cs
 E:\ca2\WorkoutTracker.Client\obj\Debug\net8.0\WorkoutTracker.Client.csproj.CoreCompileInputs.cache
+E:\ca2\WorkoutTracker.Client\obj\Debug\net8.0\WorkoutTracker.Client.sourcelink.json
 E:\ca2\WorkoutTracker.Client\obj\Debug\net8.0\WorkoutTracker.Client.dll
 E:\ca2\WorkoutTracker.Client\obj\Debug\net8.0\refint\WorkoutTracker.Client.dll
 E:\ca2\WorkoutTracker.Client\obj\Debug\net8.0\WorkoutTracker.Client.pdb
