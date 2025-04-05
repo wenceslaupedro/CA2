@@ -13,15 +13,19 @@ builder.WebHost.ConfigureKestrel(options =>
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+// Set environment based on configuration
 // Set environment to Production for Azure deployment
-builder.Environment.EnvironmentName = "Production";
+ builder.Environment.EnvironmentName = "Production";
 
 // Configure CORS for Azure Static Web Apps
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAzureStaticWebApps",
         builder => builder
-            .WithOrigins("https://green-bay-07e299f1e.6.azurestaticapps.net", "http://localhost:5001")
+            .WithOrigins(
+                "https://green-bay-07e299f1e.6.azurestaticapps.net",
+                builder.Configuration["AZURE_STATIC_WEB_APPS_API_URL"] ?? "http://localhost:5050"
+            )
             .AllowAnyMethod()
             .AllowAnyHeader()
             .AllowCredentials());

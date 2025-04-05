@@ -13,15 +13,19 @@ builder.WebHost.ConfigureKestrel(options =>
 builder.Services.AddControllers()
     .AddApplicationPart(typeof(WorkoutTracker.API.Controllers.AnalysisController).Assembly);
 
-builder.Services.AddDbContext<WorkoutContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+// Set environment based on configuration
+var environment = builder.Environment;
+environment.EnvironmentName = builder.Configuration["ASPNETCORE_ENVIRONMENT"] ?? "Production";
 
 // Configure CORS for Azure Static Web Apps
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAzureStaticWebApps",
         builder => builder
-            .WithOrigins("https://green-bay-07e299f1e.6.azurestaticapps.net", "http://localhost:5001")
+            .WithOrigins(
+                "https://green-bay-07e299f1e.6.azurestaticapps.net",
+                builder.Configuration["AZURE_STATIC_WEB_APPS_API_URL"] ?? "http://localhost:5001"
+            )
             .AllowAnyMethod()
             .AllowAnyHeader()
             .AllowCredentials());
