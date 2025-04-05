@@ -7,19 +7,16 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-// Configure Kestrel
-builder.WebHost.ConfigureKestrel(options =>
+// Configure HTTPS redirection
+builder.Services.AddHttpsRedirection(options =>
 {
-    options.ListenLocalhost(5000);
-    options.ListenLocalhost(5001, listenOptions =>
-    {
-        listenOptions.UseHttps();
-    });
+    options.HttpsPort = 5003;
 });
 
 // Configure database
 builder.Services.AddDbContext<WorkoutContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"),
+        sqlServerOptions => sqlServerOptions.EnableRetryOnFailure()));
 
 // Configure CORS for Azure Static Web Apps
 builder.Services.AddCors(options =>
@@ -28,7 +25,8 @@ builder.Services.AddCors(options =>
         builder => builder
             .WithOrigins(
                 "https://green-bay-07e299f1e.6.azurestaticapps.net",
-                "http://localhost:5001"
+                "http://localhost:5002",
+                "https://localhost:5003"
             )
             .AllowAnyMethod()
             .AllowAnyHeader()

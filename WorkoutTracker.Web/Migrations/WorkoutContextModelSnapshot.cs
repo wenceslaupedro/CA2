@@ -24,44 +24,39 @@ namespace WorkoutTracker.Web.Migrations
 
             modelBuilder.Entity("WorkoutTracker.Web.Models.Exercise", b =>
                 {
-                    b.Property<int>("ExerciseId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ExerciseId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Description")
-                        .IsRequired()
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("DifficultyLevel")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("MuscleGroup")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("ExerciseId");
+                    b.HasKey("Id");
 
                     b.ToTable("Exercises");
                 });
 
             modelBuilder.Entity("WorkoutTracker.Web.Models.Workout", b =>
                 {
-                    b.Property<int>("WorkoutId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("WorkoutId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("DatePerformed")
                         .HasColumnType("datetime2");
@@ -73,7 +68,6 @@ namespace WorkoutTracker.Web.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Notes")
-                        .IsRequired()
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
 
@@ -84,9 +78,10 @@ namespace WorkoutTracker.Web.Migrations
                         .HasColumnType("int");
 
                     b.Property<decimal?>("Weight")
+                        .IsRequired()
                         .HasColumnType("decimal(18,2)");
 
-                    b.HasKey("WorkoutId");
+                    b.HasKey("Id");
 
                     b.HasIndex("ExerciseId");
 
