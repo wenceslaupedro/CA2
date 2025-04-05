@@ -31,18 +31,16 @@ jobs:
       - name: Publish Web Project
         run: |
           dotnet publish WorkoutTracker.Web/WorkoutTracker.Web.csproj -c Release -o "${{env.DOTNET_ROOT}}/publish/web" --no-build
-          # Rename appsettings.json to avoid conflicts
-          if [ -f "${{env.DOTNET_ROOT}}/publish/web/appsettings.json" ]; then
-            mv "${{env.DOTNET_ROOT}}/publish/web/appsettings.json" "${{env.DOTNET_ROOT}}/publish/web/appsettings.web.json"
-          fi
+          if (Test-Path "${{env.DOTNET_ROOT}}/publish/web/appsettings.json") {
+            Rename-Item -Path "${{env.DOTNET_ROOT}}/publish/web/appsettings.json" -NewName "appsettings.web.json"
+          }
 
       - name: Publish API Project
         run: |
           dotnet publish WorkoutTracker.API/WorkoutTracker.API.csproj -c Release -o "${{env.DOTNET_ROOT}}/publish/api" --no-build
-          # Rename appsettings.json to avoid conflicts
-          if [ -f "${{env.DOTNET_ROOT}}/publish/api/appsettings.json" ]; then
-            mv "${{env.DOTNET_ROOT}}/publish/api/appsettings.json" "${{env.DOTNET_ROOT}}/publish/api/appsettings.api.json"
-          fi
+          if (Test-Path "${{env.DOTNET_ROOT}}/publish/api/appsettings.json") {
+            Rename-Item -Path "${{env.DOTNET_ROOT}}/publish/api/appsettings.json" -NewName "appsettings.api.json"
+          }
 
       - name: Upload Web artifact
         uses: actions/upload-artifact@v4
@@ -71,9 +69,9 @@ jobs:
       
       - name: Rename appsettings for Web
         run: |
-          if [ -f "appsettings.web.json" ]; then
-            mv appsettings.web.json appsettings.json
-          fi
+          if (Test-Path "appsettings.web.json") {
+            Rename-Item -Path "appsettings.web.json" -NewName "appsettings.json"
+          }
       
       - name: Deploy Web to Azure Web App
         id: deploy-to-webapp
@@ -99,9 +97,9 @@ jobs:
       
       - name: Rename appsettings for API
         run: |
-          if [ -f "appsettings.api.json" ]; then
-            mv appsettings.api.json appsettings.json
-          fi
+          if (Test-Path "appsettings.api.json") {
+            Rename-Item -Path "appsettings.api.json" -NewName "appsettings.json"
+          }
       
       - name: Deploy API to Azure Web App
         id: deploy-to-api
